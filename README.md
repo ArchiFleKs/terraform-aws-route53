@@ -9,7 +9,9 @@ There are independent submodules:
 - [zones](https://github.com/terraform-aws-modules/terraform-aws-route53/tree/master/modules/zones) - to manage Route53 zones
 - [records](https://github.com/terraform-aws-modules/terraform-aws-route53/tree/master/modules/records) - to manage Route53 records
 - [delegation-sets](https://github.com/terraform-aws-modules/terraform-aws-route53/tree/master/modules/delegation-sets) - to manage Route53 delegation sets
+- [resolver-endpoints](https://github.com/terraform-aws-modules/terraform-aws-route53/tree/master/modules/resolver-endpoints) - to manage Route53 resolver endpoints
 - [resolver-rule-associations](https://github.com/terraform-aws-modules/terraform-aws-route53/tree/master/modules/resolver-rule-associations) - to manage Route53 resolver rule associations
+- [zone-cross-account-vpc-association](https://github.com/terraform-aws-modules/terraform-aws-route53/tree/master/modules/zone-cross-account-vpc-association) - to associate Route53 zones with VPCs from different AWS accounts
 
 ## Usage
 
@@ -18,7 +20,7 @@ There are independent submodules:
 ```hcl
 module "zones" {
   source  = "terraform-aws-modules/route53/aws//modules/zones"
-  version = "~> 2.0"
+  version = "~> 3.0"
 
   zones = {
     "terraform-aws-modules-example.com" = {
@@ -40,7 +42,7 @@ module "zones" {
 
 module "records" {
   source  = "terraform-aws-modules/route53/aws//modules/records"
-  version = "~> 2.0"
+  version = "~> 3.0"
 
   zone_name = keys(module.zones.route53_zone_zone_id)[0]
 
